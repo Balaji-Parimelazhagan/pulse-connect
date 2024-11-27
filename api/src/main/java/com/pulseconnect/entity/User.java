@@ -7,12 +7,14 @@ import java.util.UUID;
 
 @Data
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue
     private UUID id;
+
+    private String name;
 
     @Column
     private String externalId;
