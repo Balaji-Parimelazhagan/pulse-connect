@@ -16,11 +16,12 @@ import java.util.List;
 @Service
 public class SurveyServiceImpl implements SurveyService {
     @Autowired
-    SurveyRepository surveyRepository;
+    private SurveyRepository surveyRepository;
 
+    @Autowired
     private ModelMapper modelMapper;
 
-    public SurveyDTO createSurvey (SurveyDTO surveyDto) {
+    public SurveyDTO createSurvey(SurveyDTO surveyDto) {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         Survey survey = modelMapper.map(surveyDto, Survey.class);
         survey = surveyRepository.save(survey);
@@ -33,7 +34,8 @@ public class SurveyServiceImpl implements SurveyService {
         List<Survey> surveys = surveyRepository.findByTitleLikeIgnoreCase(title);
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         if (!surveys.isEmpty()) {
-            surveyDTOs = modelMapper.map(surveys, new TypeToken<List<SurveyDTO>>(){}.getType());
+            surveyDTOs = modelMapper.map(surveys, new TypeToken<List<SurveyDTO>>() {
+            }.getType());
         }
         return surveyDTOs;
     }

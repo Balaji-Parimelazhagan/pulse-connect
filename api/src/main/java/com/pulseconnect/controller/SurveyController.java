@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class SurveyController {
     @Autowired
     SurveyService surveyService;
+
     @PostMapping
     SurveyDTO createSurvey(@RequestBody SurveyDTO surveyDTO) {
         return surveyService.createSurvey(surveyDTO);
     }
 
-//    @GetMapping("/{id}")
+    // @GetMapping("/{id}")
 
 }
