@@ -1,7 +1,11 @@
 package com.pulseconnect.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.UUID;
@@ -9,6 +13,9 @@ import java.util.UUID;
 @Data
 @Entity
 @Table(name = "actionItem")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ActionItem {
 
     @Id
@@ -21,11 +28,11 @@ public class ActionItem {
     @Column
     private String description;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "survey")
     private Survey survey;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "assignee")
     private User assignee;
 
