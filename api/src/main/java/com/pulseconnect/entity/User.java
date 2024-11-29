@@ -19,11 +19,11 @@ public class User {
     @Column
     private String externalId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role")
     private Role role;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department")
     private Department department;
 }
