@@ -2,21 +2,17 @@ package com.pulseconnect.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 import java.util.UUID;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
 @Table(name = "actionItem")
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class ActionItem {
+public class ActionItem extends BaseEntity {
 
     @Id
     @GeneratedValue
@@ -41,16 +37,4 @@ public class ActionItem {
 
     @Column
     private String status;
-
-    @Column
-    private UUID createdBy;
-
-    @Column
-    private Date createdAt;
-
-    @Column
-    private UUID updatedBy;
-
-    @Column
-    private Date updatedAt;
 }
