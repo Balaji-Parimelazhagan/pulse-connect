@@ -1,0 +1,408 @@
+{
+	"info": {
+		"_postman_id": "bce56b12-5cd8-4d80-86c1-31d3aa3c61e2",
+		"name": "Pulse-connect",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19915938",
+		"_collection_link": "https://restless-desert-491030.postman.co/workspace/Team-Workspace~a6f5eafb-03cb-4a63-8dd1-7d431a452a13/collection/19915938-bce56b12-5cd8-4d80-86c1-31d3aa3c61e2?action=share&source=collection_link&creator=19915938"
+	},
+	"item": [
+		{
+			"name": "form",
+			"item": [
+				{
+					"name": "form create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"form\":{\n        \"name\" : \"sample\",\n        \"template\" : \"abc\"\n    },\n    \"description\":\"sample survey\",\n    \"status\": \"success\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ip}}:8090/survey",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "8090",
+							"path": [
+								"survey"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create form response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"sample\",\n    \"template\": \"abc\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ip}}:8090/forms",
+									"host": [
+										"{{ip}}"
+									],
+									"port": "8090",
+									"path": [
+										"forms"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 02 Dec 2024 18:52:39 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"9879162a-8048-4140-90f9-ab40b91740b4\",\n    \"name\": \"sample\",\n    \"template\": \"abc\",\n    \"createdBy\": null,\n    \"createdAt\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "survey",
+			"item": [
+				{
+					"name": "create survey",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"form\":{\n        \"id\": \"9879162a-8048-4140-90f9-ab40b91740b4\",\n        \"name\" : \"sample\",\n        \"template\" : \"abc\"\n    },\n    \"title\":\"Surveymodel\",\n    \"description\":\"sample survey\",\n    \"status\": \"completed\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ip}}:8090/survey",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "8090",
+							"path": [
+								"survey"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create survey response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"form\":{\n        \"id\": \"9879162a-8048-4140-90f9-ab40b91740b4\",\n        \"name\" : \"sample\",\n        \"template\" : \"abc\"\n    },\n    \"title\":\"Surveymodel\",\n    \"description\":\"sample survey\",\n    \"status\": \"completed\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ip}}:8090/survey",
+									"host": [
+										"{{ip}}"
+									],
+									"port": "8090",
+									"path": [
+										"survey"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 02 Dec 2024 18:54:17 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"f890dcdb-55ba-4620-ad33-5c0a4368d9c9\",\n    \"title\": \"Surveymodel\",\n    \"form\": {\n        \"id\": \"9879162a-8048-4140-90f9-ab40b91740b4\",\n        \"name\": \"sample\",\n        \"template\": \"abc\",\n        \"createdBy\": null,\n        \"createdAt\": null\n    },\n    \"description\": \"sample survey\",\n    \"createdBy\": null,\n    \"createdAt\": null,\n    \"surveyResponse\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "get survey",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ip}}:8090/survey/f890dcdb-55ba-4620-ad33-5c0a4368d9c9",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "8090",
+							"path": [
+								"survey",
+								"f890dcdb-55ba-4620-ad33-5c0a4368d9c9"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get survey response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ip}}:8090/survey/f890dcdb-55ba-4620-ad33-5c0a4368d9c9",
+									"host": [
+										"{{ip}}"
+									],
+									"port": "8090",
+									"path": [
+										"survey",
+										"f890dcdb-55ba-4620-ad33-5c0a4368d9c9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 02 Dec 2024 19:23:46 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"f890dcdb-55ba-4620-ad33-5c0a4368d9c9\",\n    \"title\": \"Surveymodel\",\n    \"form\": {\n        \"id\": \"9879162a-8048-4140-90f9-ab40b91740b4\",\n        \"name\": \"sample\",\n        \"template\": \"abc\",\n        \"createdBy\": null,\n        \"createdAt\": null\n    },\n    \"description\": \"sample survey\",\n    \"createdBy\": null,\n    \"createdAt\": null,\n    \"status\": null,\n    \"surveyResponse\": {\n        \"id\": \"a6f956f6-7594-4025-9780-84a4c148e599\",\n        \"response\": \"{\\\"question\\\": \\\"answer\\\"}\",\n        \"userId\": \"17c6a606-4371-407f-908b-311b94d6ba49\",\n        \"surveyId\": \"f890dcdb-55ba-4620-ad33-5c0a4368d9c9\",\n        \"createdBy\": null,\n        \"createdAt\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get survey with questions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ip}}:8090/survey/f890dcdb-55ba-4620-ad33-5c0a4368d9c9",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "8090",
+							"path": [
+								"survey",
+								"f890dcdb-55ba-4620-ad33-5c0a4368d9c9"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get survey with questions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ip}}:8090/survey/questions/f890dcdb-55ba-4620-ad33-5c0a4368d9c9",
+									"host": [
+										"{{ip}}"
+									],
+									"port": "8090",
+									"path": [
+										"survey",
+										"questions",
+										"f890dcdb-55ba-4620-ad33-5c0a4368d9c9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 02 Dec 2024 19:30:33 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"f890dcdb-55ba-4620-ad33-5c0a4368d9c9\",\n    \"title\": \"Surveymodel\",\n    \"form\": {\n        \"id\": \"9879162a-8048-4140-90f9-ab40b91740b4\",\n        \"name\": \"sample\",\n        \"template\": \"abc\",\n        \"createdBy\": null,\n        \"createdAt\": null\n    },\n    \"description\": \"sample survey\",\n    \"createdBy\": null,\n    \"createdAt\": null,\n    \"status\": null,\n    \"surveyResponse\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "get survey list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ip}}:8090/survey/f890dcdb-55ba-4620-ad33-5c0a4368d9c9",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "8090",
+							"path": [
+								"survey",
+								"f890dcdb-55ba-4620-ad33-5c0a4368d9c9"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get survey Copy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ip}}:8090/survey/list",
+									"host": [
+										"{{ip}}"
+									],
+									"port": "8090",
+									"path": [
+										"survey",
+										"list"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 02 Dec 2024 19:24:34 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"f890dcdb-55ba-4620-ad33-5c0a4368d9c9\",\n        \"title\": \"Surveymodel\",\n        \"form\": {\n            \"id\": \"9879162a-8048-4140-90f9-ab40b91740b4\",\n            \"name\": \"sample\",\n            \"template\": \"abc\",\n            \"createdBy\": null,\n            \"createdAt\": null\n        },\n        \"description\": \"sample survey\",\n        \"createdBy\": null,\n        \"createdAt\": null,\n        \"status\": null,\n        \"surveyResponse\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "create survey response",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"surveyId\": \"f890dcdb-55ba-4620-ad33-5c0a4368d9c9\",\n    \"userId\": \"17c6a606-4371-407f-908b-311b94d6ba49\",\n    \"response\": \"{\\\"question\\\":\\\"answer\\\"}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ip}}:8090/survey/response/save",
+							"host": [
+								"{{ip}}"
+							],
+							"port": "8090",
+							"path": [
+								"survey",
+								"response",
+								"save"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

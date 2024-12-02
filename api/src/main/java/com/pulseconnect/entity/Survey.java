@@ -18,7 +18,7 @@ public class Survey {
     @Column
     private String title;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "form")
     private Form form;
 

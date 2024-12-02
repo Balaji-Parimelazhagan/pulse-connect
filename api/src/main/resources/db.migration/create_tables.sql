@@ -61,3 +61,14 @@ CREATE TABLE IF NOT EXISTS public.dispute (
     updated_by UUID,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS public.survey_response (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    survey_id UUID REFERENCES public.survey(id),
+    response jsonb,
+    user_id UUID,
+    created_by UUID,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_by UUID,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

@@ -14,6 +14,7 @@ import java.util.List;
 public class GlobalExceptionHandler {
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<ErrorResponse> handleNotFoundException(RuntimeException ex) {
+        ex.printStackTrace();
         return new ResponseEntity<>(new ErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND.value()
         ), HttpStatus.NOT_FOUND);
     }

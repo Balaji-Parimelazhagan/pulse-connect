@@ -19,4 +19,8 @@ public class SurveyDTO {
     private UUID createdBy;
 
     private Date createdAt;
+
+    private String status;
+
+    private SurveyResponseDTO surveyResponse;
 }
