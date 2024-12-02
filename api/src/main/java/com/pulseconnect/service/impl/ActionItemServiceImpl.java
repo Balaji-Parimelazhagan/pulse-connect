@@ -3,14 +3,13 @@ package com.pulseconnect.service.impl;
 import com.pulseconnect.entity.ActionItem;
 import com.pulseconnect.entity.Survey;
 import com.pulseconnect.entity.User;
-import com.pulseconnect.repository.SurveyRepository;
-import com.pulseconnect.repository.UserRepository;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.pulseconnect.entity.dto.ActionItemDTO;
 import com.pulseconnect.repository.ActionItemRepository;
+import com.pulseconnect.repository.SurveyRepository;
+import com.pulseconnect.repository.UserRepository;
 import com.pulseconnect.service.ActionItemService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -36,12 +35,12 @@ public class ActionItemServiceImpl implements ActionItemService {
     @Override
     public ActionItemDTO createActionItem(ActionItemDTO actionItemDTO) {
 
-//      Get USER from DB
+        //Get USER from DB
         User user = userRepository
                 .findById(actionItemDTO.getAssigneeId())
                 .orElseThrow(() -> new RuntimeException("User Not Found"));
 
-//      Get Survey from DB
+        //Get Survey from DB
         Optional<Survey> survey = surveyRepository.findById(actionItemDTO.getSurveyId());
         if (survey.isEmpty()) {
             throw new RuntimeException("Survey not found");

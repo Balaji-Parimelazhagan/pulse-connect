@@ -6,3 +6,11 @@
   width: 100vw;
   height: 100vh;
 }
+
+.p-inputtext {
+  padding: 0.4rem 0.7rem;
+}
+
+.p-component {
+  box-shadow: none;
+}
