@@ -1,15 +1,18 @@
 package com.pulseconnect.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 import java.util.UUID;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
 @Table(name = "dispute")
-public class Dispute {
+public class Dispute extends BaseEntity {
 
     @Id
     @GeneratedValue
@@ -29,21 +32,10 @@ public class Dispute {
     @JoinColumn(name = "assignee")
     private User assignee;
 
-    @Column
+    @Column(nullable = false)
     private String priority;
 
-    @Column
+    @Column(nullable = false)
     private String status;
 
-    @Column
-    private UUID createdBy;
-
-    @Column
-    private Date createdAt;
-
-    @Column
-    private UUID updatedBy;
-
-    @Column
-    private Date updatedAt;
 }
