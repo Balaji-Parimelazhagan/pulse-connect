@@ -8,9 +8,11 @@ export const questionTypes = {
 };
 
 export interface IQuestion {
+  id: string;
   type: string;
   title: string;
   isRequired: boolean;
+  answer: any;
 }
 export interface ISurvey {
   title: string;
