@@ -1,20 +1,20 @@
-import { InputSwitch } from "primereact/inputswitch";
-import { InputText } from "primereact/inputtext";
-import { useState } from "react";
-import NewQuestion from "../components/NewQuestion";
-import { IQuestion, ISurvey, questionTypes } from "../constants/appContants";
-import { InputTextarea } from "primereact/inputtextarea";
-import Question from "../components/Question";
-import { useFormik } from "formik";
-import { Button } from "primereact/button";
-import { saveSurvey } from "../services/surveyService";
+import { InputSwitch } from 'primereact/inputswitch';
+import { InputText } from 'primereact/inputtext';
+import { useState } from 'react';
+import NewQuestion from '../components/NewQuestion';
+import { IQuestion, ISurvey, questionTypes } from '../constants/appContants';
+import { InputTextarea } from 'primereact/inputtextarea';
+import Question from '../components/Question';
+import { useFormik } from 'formik';
+import { Button } from 'primereact/button';
+import { saveSurvey } from '../services/surveyService';
 
 const CreateSurvey = () => {
   const initialValues = {
-    title: "",
-    description: "",
+    title: '',
+    description: '',
     questions: [],
-    users: [],
+    emails: [],
   };
 
   const surveyForm = useFormik<ISurvey>({
@@ -28,17 +28,17 @@ const CreateSurvey = () => {
 
   const addQuestion = (question: IQuestion) => {
     question.id = Date.now().toString();
-    surveyForm.setFieldValue("questions", [
+    surveyForm.setFieldValue('questions', [
       ...surveyForm.values.questions,
       question,
     ]);
   };
 
   const [newQuestion, setNewQuestion] = useState<IQuestion>({
-    id: "",
-    title: "",
+    id: '',
+    title: '',
     type: questionTypes.shortText,
-    answer: "",
+    answer: '',
     isRequired: false,
   });
   const [isInteractiveMode, setIsInteractiveMode] = useState(false);
@@ -55,10 +55,14 @@ const CreateSurvey = () => {
         <InputText
           placeholder="Unititled Survey"
           className="w-3/6 p-1.5 border font-bold text-center rounded-md min-w-96"
+          onChange={(e) => surveyForm.setFieldValue('title', e?.target?.value)}
         />
         <InputTextarea
           placeholder="Survey Description"
           className="w-4/6 p-1.5 pt-2 border font-semibold text-center rounded-md min-w-96"
+          onChange={(e) =>
+            surveyForm.setFieldValue('description', e?.target?.value)
+          }
         />
       </div>
       <div className="flex flex-col w-3/5 bg-white max-h-[70%] overflow-y-auto">
@@ -77,6 +81,9 @@ const CreateSurvey = () => {
           rows={4}
           className="w-2/6 h- p-1.5 pt-2 border rounded-md min-w-96"
           placeholder="john@company.com, joe@company.com, ellisa@company.com"
+          onChange={(e) =>
+            surveyForm.setFieldValue('emails', e?.target?.value.split(','))
+          }
         />
       </div>
       <div className="w-3/5 flex justify-center">
@@ -88,11 +95,11 @@ const CreateSurvey = () => {
       </div>
       <img
         src="src/assets/3.jpg"
-        className="h-64 absolute bottom-0 -left-40 -z-10"
+        className="h-64 absolute bottom-5 -left-40 -z-10"
       />
       <img
         src="src/assets/4.jpg"
-        className="h-64 absolute bottom-0 -right-40 -z-10"
+        className="h-64 absolute bottom-5 -right-40 -z-10"
       />
     </div>
   );

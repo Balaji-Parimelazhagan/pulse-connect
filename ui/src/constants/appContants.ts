@@ -18,7 +18,7 @@ export interface ISurvey {
   title: string;
   description: string;
   questions: IQuestion[] | [];
-  users: string[] | [];
+  emails: string[] | [];
 }
 
 export interface IDispute {
