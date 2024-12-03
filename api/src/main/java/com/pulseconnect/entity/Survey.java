@@ -3,13 +3,16 @@ package com.pulseconnect.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
 @Data
 @Entity
 @Table(name = "survey")
-public class Survey {
+public class Survey implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue
