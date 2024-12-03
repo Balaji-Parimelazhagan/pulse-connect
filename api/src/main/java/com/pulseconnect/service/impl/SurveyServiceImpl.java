@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
+import com.pulseconnect.entity.Form;
 import com.pulseconnect.entity.Survey;
 import com.pulseconnect.entity.SurveyResponse;
 import com.pulseconnect.entity.dto.SurveyDTO;
 import com.pulseconnect.entity.dto.SurveyResponseDTO;
+import com.pulseconnect.repository.FormRepository;
 import com.pulseconnect.repository.SurveyRepository;
 import com.pulseconnect.repository.SurveyResponseRepository;
 import com.pulseconnect.service.SurveyService;
@@ -27,11 +29,19 @@ public class SurveyServiceImpl implements SurveyService {
     private SurveyResponseRepository surveyResponseRepository;
 
     @Autowired
+    private FormRepository formRepository;
+
+    @Autowired
     private ModelMapper modelMapper;
 
     public SurveyDTO createSurvey(SurveyDTO surveyDto) {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         Survey survey = modelMapper.map(surveyDto, Survey.class);
+        Form form = new Form();
+        form.setName(surveyDto.getTitle());
+        form.setTemplate(String.valueOf(surveyDto.getQuestions()));
+        form = formRepository.save(form);
+        survey.setForm(form);
         survey = surveyRepository.save(survey);
         return modelMapper.map(survey, SurveyDTO.class);
     }

@@ -4,6 +4,7 @@ const api = axios.create({
   baseURL: "http://localhost:8090/",
   headers: {
     "Content-Type": "application/json",
+    origin: "http://localhost:5000"
   },
 });
 

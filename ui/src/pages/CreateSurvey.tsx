@@ -7,6 +7,7 @@ import { InputTextarea } from "primereact/inputtextarea";
 import Question from "../components/Question";
 import { useFormik } from "formik";
 import { Button } from "primereact/button";
+import { saveSurvey } from "../services/surveyService";
 
 const CreateSurvey = () => {
   const initialValues = {
@@ -19,7 +20,9 @@ const CreateSurvey = () => {
   const surveyForm = useFormik<ISurvey>({
     initialValues,
     onSubmit: (values) => {
-      console.log("form", values);
+      console.log('form', values);
+      saveSurvey(values);
+      alert('Survey saved successfully!');
     },
   });
 
