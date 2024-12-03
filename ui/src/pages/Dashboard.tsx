@@ -1,15 +1,18 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import Table from "../components/Table";
 import { actionItems } from "../mocks/mock";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchAllSurvey } from "../services/surveyService";
 import { getDisputes } from "../services/disputeService";
-import useStore from "../utils/store";
+import { ISurvey } from "../constants/appContants";
+// import useStore from "../utils/store";
 
 const Dashboard = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { useSurveyStore, useDisputeStore } = useStore();
+  // const { useSurveyStore, useDisputeStore } = useStore();
+  const [survey, setSurvey] = useState<ISurvey[]>([]);
+  const [dispute, setDispute] = useState([]);
   useEffect(() => {
     if (location.pathname !== "/dashboard") return;
     (async () => {
@@ -17,8 +20,10 @@ const Dashboard = () => {
         fetchAllSurvey(),
         getDisputes(),
       ]);
-      useDisputeStore((state: any) => state.setValue(disputes));
-      useSurveyStore((state: any) => state.setValue(surveys));
+      // useDisputeStore((state: any) => state.setValue(disputes));
+      // useSurveyStore((state: any) => state.setValue(surveys));
+      setSurvey(surveys as ISurvey[]);
+      setDispute(disputes as any);
     })();
   }, [location.pathname]);
   return (
@@ -28,7 +33,7 @@ const Dashboard = () => {
           header="Surveys"
           createLabel="Create survey"
           createAction={() => navigate("/survey", { replace: true })}
-          data={useSurveyStore((state: any) => state.value)}
+          data={survey}
         />
         <Table
           header="Action Items"
@@ -36,10 +41,7 @@ const Dashboard = () => {
           createAction={() => navigate("/action-item", { replace: true })}
           data={actionItems}
         />
-        <Table
-          header="Disputes"
-          data={useDisputeStore((state: any) => state.value)}
-        />
+        <Table header="Disputes" data={dispute} />
       </div>
       <div className=" absolute flex items-center top-0 left-0 -z-10">
         <img src="src/assets/logo.png" className="h-16" />{" "}
