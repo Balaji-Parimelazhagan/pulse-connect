@@ -1,3 +1,6 @@
 export const apiUrls = {
-  survey: '/survey',
+  survey: "survey",
+  surveyList: "survey/list",
+  dispute: "dispute",
+  actionItems: "action-items",
 };

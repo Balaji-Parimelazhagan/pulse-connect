@@ -1,16 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import Table from "../components/Table";
-import { actionItems, disputes, surveys } from "../mocks/mock";
-// import { useEffect } from "react";
-// import api from "../service/interceptor";
+import { actionItems } from "../mocks/mock";
+import { useEffect } from "react";
+import { fetchAllSurvey } from "../services/surveyService";
+import { getDisputes } from "../services/disputeService";
+import useStore from "../utils/store";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   const surveys = await api.get("survey");
-  //   const actionItems = await api.get("action-items");
-  //   const disputes = await api.get("dispute");
-  // }, []);
+  const { useSurveyStore, useDisputeStore } = useStore();
+  useEffect(() => {
+    (async () => {
+      const surveys = await fetchAllSurvey();
+      const disputes = await getDisputes();
+      useDisputeStore((state: any) => state.setValue(disputes));
+      useSurveyStore((state: any) => state.setValue(surveys));
+    })();
+  }, []);
   return (
     <div className="flex justify-center align-center py-5 text-sm relative h-full">
       <div className="w-3/5">
@@ -18,7 +24,7 @@ const Dashboard = () => {
           header="Surveys"
           createLabel="Create survey"
           createAction={() => navigate("/survey", { replace: true })}
-          data={surveys}
+          data={useSurveyStore((state: any) => state.value)}
         />
         <Table
           header="Action Items"
@@ -26,10 +32,13 @@ const Dashboard = () => {
           createAction={() => navigate("/action-item", { replace: true })}
           data={actionItems}
         />
-        <Table header="Disputes" data={disputes} />
+        <Table
+          header="Disputes"
+          data={useDisputeStore((state: any) => state.value)}
+        />
       </div>
       <div className=" absolute flex items-center top-0 left-0 -z-10">
-        <img src="src/assets/logo.png" className="h-16" />{' '}
+        <img src="src/assets/logo.png" className="h-16" />{" "}
         <div className="text-xl font-bold">Pulse Connect</div>
       </div>
       <img
