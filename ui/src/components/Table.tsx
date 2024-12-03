@@ -1,7 +1,7 @@
-import { Button } from 'primereact/button';
-import { Column } from 'primereact/column';
-import { DataTable } from 'primereact/datatable';
-import { camelCaseToText } from '../utils/common';
+import { Button } from "primereact/button";
+import { Column } from "primereact/column";
+import { DataTable } from "primereact/datatable";
+import { camelCaseToText } from "../utils/common";
 
 const Table = ({
   data,
@@ -28,11 +28,23 @@ const Table = ({
           )}
         </div>
       </div>
-      <DataTable value={data} className="text-sm max-h-64 border">
-        {Object.keys(data[0]).map((field) => (
-          <Column key={field} field={field} header={camelCaseToText(field)} />
-        ))}
-      </DataTable>
+      {!!data?.length ? (
+        <DataTable value={data} className="text-sm max-h-64 border">
+          {Object?.keys(data[0])?.map((field) => (
+            <Column key={field} field={field} header={camelCaseToText(field)} />
+          ))}
+        </DataTable>
+      ) : (
+        <DataTable
+          value={data}
+          className="text-sm max-h-64 border"
+          emptyMessage={
+            <div className="text-center py-6 text-gray-600">
+              No Data Available
+            </div>
+          }
+        />
+      )}
     </>
   );
 };

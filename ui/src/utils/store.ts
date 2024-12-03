@@ -2,17 +2,17 @@ import { create } from "zustand";
 
 const useStore = () => {
   const useSurveyStore = create((set) => ({
-    value: undefined,
+    value: [],
     setValue: () => set((newValue: any) => ({ value: newValue })),
   }));
 
   const useDisputeStore = create((set) => ({
-    value: undefined,
+    value: [],
     setValue: () => set((newValue: any) => ({ value: newValue })),
   }));
 
   const useActionItemStore = create((set) => ({
-    value: undefined,
+    value: [],
     setValue: () => set((newValue: any) => ({ value: newValue })),
   }));
 
