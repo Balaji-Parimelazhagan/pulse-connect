@@ -13,6 +13,7 @@ import com.pulseconnect.entity.dto.SurveyResponseDTO;
 import com.pulseconnect.repository.FormRepository;
 import com.pulseconnect.repository.SurveyRepository;
 import com.pulseconnect.repository.SurveyResponseRepository;
+import com.pulseconnect.service.EmailService;
 import com.pulseconnect.service.SurveyService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -34,6 +35,9 @@ public class SurveyServiceImpl implements SurveyService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private EmailService emailService;
+
     public SurveyDTO createSurvey(SurveyDTO surveyDto) {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         Survey survey = modelMapper.map(surveyDto, Survey.class);
@@ -43,6 +47,19 @@ public class SurveyServiceImpl implements SurveyService {
         form = formRepository.save(form);
         survey.setForm(form);
         survey = surveyRepository.save(survey);
+        List<String> recipientEmails  = surveyDto.getEmails();
+        for (String recipient : recipientEmails) {
+            emailService.sendEmail(recipient, "We Value Your Feedback – Please Take Our Survey", "Hi,\r\n"
+                    + "\r\n"
+                    + "We hope you're doing well! At Ideas2it, we're always striving to improve and provide you with the best possible experience. Your feedback is incredibly important to us, and we'd love to hear your thoughts.\r\n"
+                    + "\r\n"
+                    + "To help us serve you better, we’ve created a brief survey that will only take a few minutes to complete. Please click the link below to get started:\r\n"
+                    + "\r\n" 
+                    + "<a href=\"http:localhost:5000/survey/" + survey.getId() + "\" style=\"background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;\">Start Survey</a>\r\n"
+                    + "Your input will directly contribute to making [product/service] better for everyone. We truly appreciate your time and insights.\r\n"
+                    + "\r\n"
+                    + "Thank you for being a valued part of our community!");
+        };
         return modelMapper.map(survey, SurveyDTO.class);
     }
 

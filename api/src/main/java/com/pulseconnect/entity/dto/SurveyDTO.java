@@ -28,4 +28,6 @@ public class SurveyDTO {
     private SurveyResponseDTO surveyResponse;
 
     private List<Map<String, Object>> questions;
+
+    private List<String> emails;
 }
