@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Table from "../components/Table";
 import { actionItems } from "../mocks/mock";
 import { useEffect } from "react";
@@ -7,16 +7,20 @@ import { getDisputes } from "../services/disputeService";
 import useStore from "../utils/store";
 
 const Dashboard = () => {
+  const location = useLocation();
   const navigate = useNavigate();
   const { useSurveyStore, useDisputeStore } = useStore();
   useEffect(() => {
+    if (location.pathname !== "/dashboard") return;
     (async () => {
-      const surveys = await fetchAllSurvey();
-      const disputes = await getDisputes();
+      const [surveys, disputes] = await Promise.all([
+        fetchAllSurvey(),
+        getDisputes(),
+      ]);
       useDisputeStore((state: any) => state.setValue(disputes));
       useSurveyStore((state: any) => state.setValue(surveys));
     })();
-  }, []);
+  }, [location.pathname]);
   return (
     <div className="flex justify-center align-center py-5 text-sm relative h-full">
       <div className="w-3/5">
