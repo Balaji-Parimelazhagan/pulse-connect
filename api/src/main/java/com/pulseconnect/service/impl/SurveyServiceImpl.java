@@ -48,17 +48,17 @@ public class SurveyServiceImpl implements SurveyService {
         survey.setForm(form);
         survey = surveyRepository.save(survey);
         List<String> recipientEmails  = surveyDto.getEmails();
+        String plainTextEmailContent = "Hi,\n\n" +
+        	    "We hope you're doing well! At Ideas2it, we're always striving to improve and provide you with the best possible experience. Your feedback is incredibly important to us, and we'd love to hear your thoughts.\n\n" +
+        	    "To help us serve you better, we’ve created a brief survey that will only take a few minutes to complete. Please click the link below to get started:\n\n" +
+        	    "Start Survey: http://localhost:5000/survey/" + survey.getId() + "\n\n" +
+        	    "Your input will directly contribute to making [product/service] better for everyone. We truly appreciate your time and insights.\n\n" +
+        	    "Thank you for being a valued part of our community!\n\n" +
+        	    "Best regards,\n" +
+        	    "Pulse Connect";
+        String emailContent = "<!DOCTYPE html><html><head><title>Survey Invitation</title></head><body><p>Hi,</p><p>We hope you're doing well! At Ideas2it, we're always striving to improve and provide you with the best possible experience. Your feedback is incredibly important to us, and we'd love to hear your thoughts.</p><p>To help us serve you better, we’ve created a brief survey that will only take a few minutes to complete. Please click the link below to get started:</p><p><a href=\"http://localhost:5000/survey/" + survey.getId() + "\" style=\"background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;\">Start Survey</a></p><p>Your input will directly contribute to making [product/service] better for everyone. We truly appreciate your time and insights.</p><p>Thank you for being a valued part of our community!</p><p>Best regards,<br>Pulse Connect<br></body></html>";
         for (String recipient : recipientEmails) {
-            emailService.sendEmail(recipient, "We Value Your Feedback – Please Take Our Survey", "Hi,\r\n"
-                    + "\r\n"
-                    + "We hope you're doing well! At Ideas2it, we're always striving to improve and provide you with the best possible experience. Your feedback is incredibly important to us, and we'd love to hear your thoughts.\r\n"
-                    + "\r\n"
-                    + "To help us serve you better, we’ve created a brief survey that will only take a few minutes to complete. Please click the link below to get started:\r\n"
-                    + "\r\n" 
-                    + "<a href=\"http:localhost:5000/survey/" + survey.getId() + "\" style=\"background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 16px;\">Start Survey</a>\r\n"
-                    + "Your input will directly contribute to making [product/service] better for everyone. We truly appreciate your time and insights.\r\n"
-                    + "\r\n"
-                    + "Thank you for being a valued part of our community!");
+            emailService.sendEmail(recipient, "We Value Your Feedback – Please Take Our Survey", plainTextEmailContent); 
         };
         return modelMapper.map(survey, SurveyDTO.class);
     }
