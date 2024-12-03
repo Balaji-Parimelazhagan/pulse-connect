@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import CreateSurvey from "./pages/CreateSurvey";
 import DisputeForm from "./pages/DisputeForm";
 import Login from "./pages/Login";
+import FillSurvey from './pages/FillSurvey';
 
 const App = () => {
   const routes = useRoutes([
@@ -22,6 +23,10 @@ const App = () => {
     {
       path: "/dispute",
       element: <DisputeForm />,
+    },
+    {
+      path: '/survey/:id',
+      element: <FillSurvey />,
     },
   ]);
   return <>{routes}</>;
