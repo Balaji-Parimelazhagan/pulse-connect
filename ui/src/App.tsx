@@ -1,28 +1,28 @@
-import { useRoutes } from "react-router-dom";
-import "/src/App.css";
-import Dashboard from "./pages/Dashboard";
-import CreateSurvey from "./pages/CreateSurvey";
-import DisputeForm from "./pages/DisputeForm";
-import Login from "./pages/Login";
+import { useRoutes } from 'react-router-dom';
+import CreateSurvey from './pages/CreateSurvey';
+import Dashboard from './pages/Dashboard';
+import DisputeLanding from './pages/DisputeLanding';
 import FillSurvey from './pages/FillSurvey';
+import Login from './pages/Login';
+import '/src/App.css';
 
 const App = () => {
   const routes = useRoutes([
     {
-      path: "/",
+      path: '/',
       element: <Login />,
     },
     {
-      path: "/dashboard",
+      path: '/dashboard',
       element: <Dashboard />,
     },
     {
-      path: "/survey",
+      path: '/survey',
       element: <CreateSurvey />,
     },
     {
-      path: "/dispute",
-      element: <DisputeForm />,
+      path: '/dispute',
+      element: <DisputeLanding />,
     },
     {
       path: '/survey/:id',

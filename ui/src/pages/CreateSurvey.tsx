@@ -1,18 +1,18 @@
-import { InputSwitch } from 'primereact/inputswitch';
-import { InputText } from 'primereact/inputtext';
-import { useState } from 'react';
-import NewQuestion from '../components/NewQuestion';
-import { IQuestion, ISurvey, questionTypes } from '../constants/appContants';
-import { InputTextarea } from 'primereact/inputtextarea';
-import Question from '../components/Question';
-import { useFormik } from 'formik';
-import { Button } from 'primereact/button';
-import { saveSurvey } from '../services/surveyService';
+import { InputSwitch } from "primereact/inputswitch";
+import { InputText } from "primereact/inputtext";
+import { useState } from "react";
+import NewQuestion from "../components/NewQuestion";
+import { IQuestion, ISurvey, questionTypes } from "../constants/appContants";
+import { InputTextarea } from "primereact/inputtextarea";
+import Question from "../components/Question";
+import { useFormik } from "formik";
+import { Button } from "primereact/button";
+import { saveSurvey } from "../services/surveyService";
 
 const CreateSurvey = () => {
   const initialValues = {
-    title: '',
-    description: '',
+    title: "",
+    description: "",
     questions: [],
     users: [],
   };
@@ -28,17 +28,17 @@ const CreateSurvey = () => {
 
   const addQuestion = (question: IQuestion) => {
     question.id = Date.now().toString();
-    surveyForm.setFieldValue('questions', [
+    surveyForm.setFieldValue("questions", [
       ...surveyForm.values.questions,
       question,
     ]);
   };
 
   const [newQuestion, setNewQuestion] = useState<IQuestion>({
-    id: '',
-    title: '',
+    id: "",
+    title: "",
     type: questionTypes.shortText,
-    answer: '',
+    answer: "",
     isRequired: false,
   });
   const [isInteractiveMode, setIsInteractiveMode] = useState(false);
@@ -69,6 +69,14 @@ const CreateSurvey = () => {
           state={newQuestion}
           setState={setNewQuestion}
           addQuestion={addQuestion}
+        />
+      </div>
+      <div className="flex flex-col w-full gap-2 items-center">
+        <InputTextarea
+          id="recipients"
+          rows={4}
+          className="w-2/6 h- p-1.5 pt-2 border rounded-md min-w-96"
+          placeholder="john@company.com, joe@company.com, ellisa@company.com"
         />
       </div>
       <div className="w-3/5 flex justify-center">
