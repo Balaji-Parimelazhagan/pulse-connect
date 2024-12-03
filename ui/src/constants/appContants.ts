@@ -20,3 +20,10 @@ export interface ISurvey {
   questions: IQuestion[] | [];
   users: string[] | [];
 }
+
+export interface IDispute {
+  title: string;
+  department: string;
+  description: string;
+  email?: string;
+}
