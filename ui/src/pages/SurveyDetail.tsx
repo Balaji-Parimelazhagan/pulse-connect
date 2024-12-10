@@ -1,14 +1,12 @@
-import { Button } from "primereact/button";
-import { Carousel } from "primereact/carousel";
-import { Chart } from "primereact/chart";
-import { Dropdown } from "primereact/dropdown";
-import { RadioButton } from "primereact/radiobutton";
-import { TabPanel, TabView } from "primereact/tabview";
-import { useState } from "react";
-import { GrDocumentText } from "react-icons/gr";
+import { Button } from 'primereact/button';
+import { Carousel } from 'primereact/carousel';
+import { Chart } from 'primereact/chart';
+import { Dropdown } from 'primereact/dropdown';
+import { useState } from 'react';
+import { GrDocumentText } from 'react-icons/gr';
 
 const SurveyDetail = () => {
-  const countries = [{ name: "Snack Feedback" }];
+  const countries = [{ name: 'Snack Feedback' }];
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
 
   return (
@@ -27,33 +25,6 @@ const SurveyDetail = () => {
         <div className=" mt-10">
           <Track />
           <QuestionCarousel />
-          {/* <TabView>
-            <TabPanel header="Track"></TabPanel>
-            <TabPanel header="Responses">
-              <p className="m-0">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae
-                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-                voluptas sit aspernatur aut odit aut fugit, sed quia
-                consequuntur magni dolores eos qui ratione voluptatem sequi
-                nesciunt. Consectetur, adipisci velit, sed quia non numquam eius
-                modi.
-              </p>
-            </TabPanel>
-            <TabPanel header="Action items">
-              <p className="m-0">
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                blanditiis praesentium voluptatum deleniti atque corrupti quos
-                dolores et quas molestias excepturi sint occaecati cupiditate
-                non provident, similique sunt in culpa qui officia deserunt
-                mollitia animi, id est laborum et dolorum fuga. Et harum quidem
-                rerum facilis est et expedita distinctio. Nam libero tempore,
-                cum soluta nobis est eligendi optio cumque nihil impedit quo
-                minus.
-              </p>
-            </TabPanel>
-          </TabView> */}
         </div>
       </div>
       <img
@@ -75,11 +46,11 @@ const Track = () => {
     },
   };
   const data = {
-    labels: ["Pending", "Opened", "Responded"],
+    labels: ['Pending', 'Opened', 'Responded'],
     datasets: [
       {
         data: [540, 325, 702],
-        backgroundColor: ["#32AD5B", "#FBC760", "#D9534F"],
+        backgroundColor: ['#32AD5B', '#FBC760', '#D9534F'],
         hoverBackgroundColor: [],
       },
     ],
@@ -162,83 +133,83 @@ const Track = () => {
 
 const surveyQuestions = [
   {
-    label: "How would you rate your work environment?",
+    label: 'How would you rate your work environment?',
     data: [72, 85, 94, 66],
   },
   {
-    label: "Do you feel that you have an appropriate work-life balance?",
+    label: 'Do you feel that you have an appropriate work-life balance?',
     data: [54, 89, 61, 72],
   },
   {
     label:
-      "How satisfied are you with the remote work options available at the company?",
+      'How satisfied are you with the remote work options available at the company?',
     data: [77, 95, 80, 54],
   },
   {
-    label: "How effective do you find team collaboration within your team?",
+    label: 'How effective do you find team collaboration within your team?',
     data: [66, 59, 70, 74],
   },
   {
     label:
-      "Are you satisfied with the training and development opportunities provided by the company?",
+      'Are you satisfied with the training and development opportunities provided by the company?',
     data: [61, 72, 85, 91],
   },
   {
     label:
-      "How would you rate the communication between management and employees?",
+      'How would you rate the communication between management and employees?',
     data: [80, 58, 74, 67],
   },
   {
     label:
-      "Do you feel there are sufficient career growth opportunities within the company?",
+      'Do you feel there are sufficient career growth opportunities within the company?',
     data: [92, 73, 64, 77],
   },
   {
-    label: "How would you describe the company culture?",
+    label: 'How would you describe the company culture?',
     data: [84, 90, 55, 78],
   },
   {
     label:
-      "Do you feel that your efforts and achievements are recognized by the company?",
+      'Do you feel that your efforts and achievements are recognized by the company?',
     data: [69, 66, 95, 88],
   },
   {
     label:
-      "Are you provided with the necessary tools and resources to perform your job effectively?",
+      'Are you provided with the necessary tools and resources to perform your job effectively?',
     data: [72, 81, 90, 66],
   },
   {
     label:
-      "How supportive is your manager in helping you achieve your work goals?",
+      'How supportive is your manager in helping you achieve your work goals?',
     data: [70, 54, 77, 82],
   },
   {
     label:
-      "Overall, how satisfied are you with your current role at the company?",
+      'Overall, how satisfied are you with your current role at the company?',
     data: [83, 58, 71, 74],
   },
   {
-    label: "Do you feel that your feedback is valued by the company?",
+    label: 'Do you feel that your feedback is valued by the company?',
     data: [59, 73, 80, 85],
   },
   {
-    label: "Do you see yourself working at the company in the next two years?",
+    label: 'Do you see yourself working at the company in the next two years?',
     data: [61, 72, 79, 85],
   },
   {
     label:
-      "Does the company provide sufficient support for your health and well-being?",
+      'Does the company provide sufficient support for your health and well-being?',
     data: [55, 88, 77, 72],
   },
 ].map(({ data, label }) => {
   return {
     questionLabel: label,
-    labels: ["😍", "🙂", "😏", "🤮"],
+    labels: ['😍', '🙂', '😏', '🤮'],
     datasets: [
       {
-        label: "No of votes",
-        backgroundColor: "pink",
-        borderColor: "black",
+        label: 'No of votes',
+        backgroundColor: 'pink',
+        borderColor: 'black',
         data,
       },
     ],
@@ -246,12 +217,12 @@ const surveyQuestions = [
 });
 
 const originalData = {
-  labels: ["😍", "🙂", "😏", "🤮"],
+  labels: ['😍', '🙂', '😏', '🤮'],
   datasets: [
     {
-      label: "No of votes",
-      backgroundColor: "pink",
-      borderColor: "black",
+      label: 'No of votes',
+      backgroundColor: 'pink',
+      borderColor: 'black',
       data: [65, 59, 80, 81],
     },
   ],
@@ -263,17 +234,17 @@ const options = {
   plugins: {
     legend: {
       labels: {
-        fontColor: "black",
+        fontColor: 'black',
       },
     },
   },
   scales: {
     x: {
       ticks: {
-        color: "black",
+        color: 'black',
         font: {
           weight: 500,
-          size: "24px",
+          size: '24px',
         },
       },
       grid: {
@@ -283,7 +254,7 @@ const options = {
     },
     y: {
       ticks: {
-        color: "black",
+        color: 'black',
       },
       grid: {
         // color: "yellow",

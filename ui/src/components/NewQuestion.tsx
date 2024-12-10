@@ -20,24 +20,24 @@ const state = ({
     value: q,
   }));
   return (
-    <div className="w-full">
-      <div className="border p-2 flex items-start space-x-2">
+    <div className="mx-auto w-3/4">
+      <div className="border w-full p-2 flex items-start space-x-2">
         <InputTextarea
           placeholder="Unititled question"
-          className="w-3/6 p-1.5 border-b rounded-md"
+          className="w-5/6 p-1.5 border-b rounded-md"
           value={state?.title}
           onChange={(e) =>
             setState((prev) => ({ ...prev, title: e.target.value }))
           }
         />
         <Dropdown
-          className="py-0 px-0.5 min-w-20 my-2 text-center border rounded-r-full rounded-l-full"
+          className="py-0 px-0.5 min-w-48 my-2 text-center border rounded-r-full rounded-l-full"
           placeholder={state?.type}
           value={state?.type}
           options={questions}
           onChange={(e) => setState((prev) => ({ ...prev, type: e.value }))}
         />
-        <div className="flex my-2 border py-1 px-2 rounded-md gap-2 items-center">
+        {/* <div className="flex my-2 border py-1 px-2 rounded-md gap-2 items-center">
           <label>Required</label>
           <InputSwitch
             checked={state?.isRequired}
@@ -45,7 +45,7 @@ const state = ({
               setState((prev) => ({ ...prev, isRequired: e.value }))
             }
           />
-        </div>
+        </div> */}
         <div
           onClick={() => addQuestion(state)}
           className="flex my-2 items-center border py-0 px-4 rounded-r-full rounded-l-full cursor-pointer font-bold text-cyan-700 bg-cyan-100"

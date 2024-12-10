@@ -5,6 +5,7 @@ export const questionTypes = {
   checkbox: 'checkbox',
   number: 'number',
   rating: 'rating',
+  emoji: 'emoji',
 };
 
 export interface IQuestion {

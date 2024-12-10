@@ -13,6 +13,7 @@ import { WiStars } from 'react-icons/wi';
 import { CiEdit } from 'react-icons/ci';
 import { ImInsertTemplate } from 'react-icons/im';
 import { PiRocketLight } from 'react-icons/pi';
+import { Carousel } from 'primereact/carousel';
 
 const CreateSurvey = () => {
   const [createMode, setCreateMode] = useState('scratch');
@@ -55,16 +56,13 @@ const CreateSurvey = () => {
 const BuildFromScratch = () => {
   const initialValues = {
     title: 'Snacks Feedback',
-    description: `We want to make your snack experience more delightful!
-     Share your thoughts and preferences about the snacks provided. 
-     Your feedback will help us improve variety, quality, and overall satisfaction.
-     It only takes a few minutes to make a big difference`,
+    description: `We want to make your snack experience more delightful! Share your thoughts and preferences about the snacks provided. Your feedback will help us improve variety, quality, and overall satisfaction. It only takes a few minutes to make a big difference`,
     questions: [
       {
         id: '1t252',
         title: `How would you rate your experience with the current vendor in
                 terms of package, and taste on a scale of 1 to 5?`,
-        type: 'rating',
+        type: 'emoji',
       },
       {
         id: '16786852',
@@ -75,7 +73,7 @@ const BuildFromScratch = () => {
         id: '167576552',
         title: `How satisfied are you with the overall quality of the snacks?
                 (Scale: 1-4 or Very Unsatisfied to Very Satisfied)`,
-        type: 'rating',
+        type: 'teaxtarea',
       },
     ],
     emails: [],
@@ -86,7 +84,6 @@ const BuildFromScratch = () => {
     onSubmit: (values) => {
       console.log('form', values);
       saveSurvey(values);
-      alert('Survey saved successfully!');
     },
   });
 
@@ -119,17 +116,25 @@ const BuildFromScratch = () => {
           />
           <InputTextarea
             placeholder="Survey Description"
-            className="w-4/6 p-1.5 text-xl pt-2 border-b font-semibold"
+            className="w-full p-1.5 text-xl pt-2 text-start border-b font-semibold"
             defaultValue={surveyForm.values.description}
+            rows={3}
             onChange={(e) =>
               surveyForm.setFieldValue('description', e?.target?.value)
             }
           />
         </div>
-        <div className="flex flex-col w-3/5 bg-white max-h-[70%] items-end overflow-y-auto">
+        <div className="w-full flex flex-col bg-white max-h-[70%] items-start overflow-y-auto">
           {surveyForm?.values?.questions?.map((question, i) => (
             <Question key={question.id} {...{ ...question, index: i + 1 }} />
           ))}
+
+          {/* <Carousel
+            className="w-3/4"
+            value={surveyForm?.values?.questions}
+            numVisible={1}
+            itemTemplate={question}
+          /> */}
           <NewQuestion
             state={newQuestion}
             setState={setNewQuestion}

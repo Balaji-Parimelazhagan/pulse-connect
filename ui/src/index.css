@@ -48,3 +48,7 @@
   background-clip: text;
   color: transparent;
 }
+.question .p-rating .p-rating-item .p-rating-icon.p-icon {
+  height: 1rem;
+  width: 1rem;
+}

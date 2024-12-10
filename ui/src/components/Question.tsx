@@ -57,12 +57,23 @@ const getQuestion = (type: string, answer: any) => {
         />
       );
     case questionTypes.radio:
-      <RadioButton
-        className="mt-4"
-        // value={answer}
-        onChange={(e) => (answer = e.target.value)}
-      />;
-      return;
+      return (
+        <RadioButton
+          className="mt-4"
+          // value={answer}
+          onChange={(e) => (answer = e.target.value)}
+        />
+      );
+
+    case questionTypes.emoji:
+      return (
+        <div className="flex mt-6 text-4xl justify-evenly emoji-wrapper">
+          <p>{`🤮`}</p>
+          <p>{`😏`}</p>
+          <p>{`🙂`}</p>
+          <p>{`😍`}</p>
+        </div>
+      );
     case questionTypes.checkbox:
       return (
         <Checkbox
@@ -72,7 +83,11 @@ const getQuestion = (type: string, answer: any) => {
         />
       );
     case questionTypes.rating:
-      return <Rating className="mt-4" onChange={(e) => (answer = e.value)} />;
+      return (
+        <div className="flex space-x-3 mt-4 justify-center">
+          <Rating className="question" cancel={false} />
+        </div>
+      );
 
     default:
       return (
