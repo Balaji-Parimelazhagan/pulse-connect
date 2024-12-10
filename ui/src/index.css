@@ -22,3 +22,18 @@
 .text-4xl {
   font-size: 2rem;
 }
+
+.emoji-wrapper:hover p:not(:hover) {
+  opacity: 0.6;
+  transform: scale(0.9);
+}
+
+.emoji-wrapper p:hover {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.p-rating .p-rating-item .p-rating-icon.p-icon {
+  height: 2rem;
+  width: 2rem;
+}

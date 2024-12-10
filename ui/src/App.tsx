@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import '/src/App.css';
 import AnonymousChat from './pages/AnonymousChat';
 import SurveyDetail from './pages/SurveyDetail';
+import SurveyResponse from './pages/SurveyResponse';
 
 const App = () => {
   const routes = useRoutes([
@@ -41,6 +42,10 @@ const App = () => {
     {
       path: '/survey/:id',
       element: <FillSurvey />,
+    },
+    {
+      path: '/survey/:id/response',
+      element: <SurveyResponse />,
     },
   ]);
   return <>{routes}</>;
