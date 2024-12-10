@@ -9,7 +9,7 @@ const SurveyResponse = () => {
   const [value, setValue] = useState(null);
   return (
     <div className="w-2/3 mx-auto h-[75%] pt-[10%]">
-      <div className="border rounded-md shadow h-full p-8 bg-white">
+      <div className="border rounded-md shadow h-full px-8 bg-white flex flex-col justify-evenly">
         <div>
           <h1 className="text-4xl font-bold">
             Snacks Feedback - <span className="font-semibold">SysAdmin</span>
@@ -101,6 +101,15 @@ const SurveyResponse = () => {
               <IoIosArrowForward size={42} />
             </Button>
           </div>
+        </div>
+        <div className="text-center">
+          <a
+            target="_blank"
+            href="http://localhost:5000/dispute"
+            className="text-center w-max mt-2 text-blue-500 text-xl"
+          >
+            File a Dispute
+          </a>
         </div>
       </div>
       <img
