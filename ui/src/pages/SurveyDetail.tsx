@@ -1,9 +1,11 @@
+import { Button } from "primereact/button";
 import { Carousel } from "primereact/carousel";
 import { Chart } from "primereact/chart";
 import { Dropdown } from "primereact/dropdown";
 import { RadioButton } from "primereact/radiobutton";
 import { TabPanel, TabView } from "primereact/tabview";
 import { useState } from "react";
+import { GrDocumentText } from "react-icons/gr";
 
 const SurveyDetail = () => {
   const countries = [{ name: "Snack Feedback" }];
@@ -91,7 +93,7 @@ const Track = () => {
             />
           </div>
         </div>
-        <div className="w-3/4 border-l">
+        <div className="w-3/4 border-l flex flex-col gap-10">
           <div className="flex rounded-md p-5 border-b">
             <div className="w-1/3 text-center border-r">
               <p>Total</p>
@@ -108,6 +110,44 @@ const Track = () => {
             <div className="w-1/3 text-center">
               <p>Avg estimated time</p>
               <p className="font-light text-2xl">23s</p>
+            </div>
+          </div>
+
+          <div className="m-5">
+            <div className="flex justify-between items-start">
+              <p className="text-2xl pb-8 font-semibold">Survey Details</p>
+              {/* <Button
+                label="View Details"
+                className="border border-blue-500 w-36 h-10"
+              /> */}
+              <Button
+                label="View Action Items"
+                className="border-2 border-blue-500 text-blue-500 rounded-r-full rounded-l-full p-1 px-2"
+                icon={
+                  <div className="mr-2">
+                    <GrDocumentText />
+                  </div>
+                }
+              />
+            </div>
+
+            <div className="flex rounded-md p-5 ">
+              <div className="w-1/3 text-center border-r">
+                <p className="text-xl">Created By</p>
+                <p className="font-light text-xl">Balaji</p>
+              </div>
+              <div className="w-1/3 text-center border-r">
+                <p className="text-xl">Created At</p>
+                <p className="font-light text-xl">10 / 12 / 2024</p>
+              </div>
+              <div className="w-1/3 text-center border-r">
+                <p className="text-xl">Status</p>
+                <p className="text-xl text-green-700 font-bold">OPEN</p>
+              </div>
+              {/* <div className="w-1/3 text-center">
+                <p>Avg estimated time</p>
+                <p className="font-light text-2xl">23s</p>
+              </div> */}
             </div>
           </div>
         </div>
