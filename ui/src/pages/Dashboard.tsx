@@ -41,7 +41,9 @@ const Dashboard = () => {
             <p className="text-sm font-light">Share survey to recipients</p>
           </div>
         </Card>
-        <Card onClick={() => navigate('/analytics', { replace: true })}>
+        <Card
+          onClick={() => navigate('/survey/analytics/:id', { replace: true })}
+        >
           <VscGraph size={28} className="mt-1" />
           <div className="text-xl font-bold">
             Analyze

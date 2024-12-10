@@ -35,7 +35,7 @@ const App = () => {
       element: <AnonymousChat />,
     },
     {
-      path: '/survey/detail/:id',
+      path: '/survey/analytics/:id',
       element: <SurveyDetail />,
     },
     {
