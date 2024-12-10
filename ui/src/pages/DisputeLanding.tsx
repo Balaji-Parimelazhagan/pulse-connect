@@ -34,12 +34,10 @@ const DisputeLanding = () => {
   const validate = (values: IDispute) => {
     const errors: IDispute = {} as {
       abstract: string;
-      department: string;
       description: string;
       email?: string;
     };
     if (!values.abstract) errors.abstract = 'Required';
-    if (!values.department) errors.department = 'Required';
     if (!values.description) errors.description = 'Required';
     if (checked && !values.email) errors.email = 'Required';
     return errors;
@@ -109,29 +107,6 @@ const DisputeLanding = () => {
                     </Field>
                     {errors.abstract && touched.abstract && (
                       <small className="p-error">{errors.abstract}</small>
-                    )}
-                  </div>
-                  <div className="mb-4">
-                    <label className={labelClasses} htmlFor="department">
-                      Department *
-                    </label>
-                    <Field name="department">
-                      {({ field }: { field: FieldInputProps<any> }) => (
-                        <Dropdown
-                          id="department"
-                          {...field}
-                          options={departments}
-                          placeholder="Department"
-                          className={`mt-2 border rounded-md w-42 inline-flex ${
-                            errors.department && touched.department
-                              ? 'p-invalid'
-                              : ''
-                          }`}
-                        />
-                      )}
-                    </Field>
-                    {errors.department && touched.department && (
-                      <small className="p-error">{errors.department}</small>
                     )}
                   </div>
                 </div>

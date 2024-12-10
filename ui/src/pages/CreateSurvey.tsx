@@ -56,7 +56,7 @@ const CreateSurvey = () => {
 const BuildFromScratch = () => {
   const initialValues = {
     title: 'Snacks Feedback',
-    description: `We want to make your snack experience more delightful! Share your thoughts and preferences about the snacks provided. Your feedback will help us improve variety, quality, and overall satisfaction. It only takes a few minutes to make a big difference`,
+    description: `We want to make your snack experience more delightful! Share your thoughts and preferences about the snacks provided.`,
     questions: [
       {
         id: '1t252',
@@ -64,17 +64,17 @@ const BuildFromScratch = () => {
                 terms of package, and taste on a scale of 1 to 5?`,
         type: 'emoji',
       },
-      {
-        id: '16786852',
-        title: `Do you have any suggestions for improving the snacks?`,
-        type: 'rating',
-      },
-      {
-        id: '167576552',
-        title: `How satisfied are you with the overall quality of the snacks?
-                (Scale: 1-4 or Very Unsatisfied to Very Satisfied)`,
-        type: 'teaxtarea',
-      },
+      // {
+      //   id: '16786852',
+      //   title: `Do you have any suggestions for improving the snacks?`,
+      //   type: 'rating',
+      // },
+      // {
+      //   id: '167576552',
+      //   title: `How satisfied are you with the overall quality of the snacks?
+      //           (Scale: 1-4 or Very Unsatisfied to Very Satisfied)`,
+      //   type: 'teaxtarea',
+      // },
     ],
     emails: [],
   };
@@ -103,43 +103,44 @@ const BuildFromScratch = () => {
     isRequired: false,
   });
   return (
-    <div className="relative h-full w-full mx-auto py-10 space-y-4 flex flex-col items-center">
+    <div className="relative h-full w-full mx-auto py-5 space-y-4 flex flex-col items-center">
       <div className="w-1/2">
-        <div className="flex flex-col w-full space-y-5 items-start">
-          <InputText
-            placeholder="Unititled Survey"
-            className="w-3/6 text-4xl p-1.5 border-b font-semibold"
-            value={surveyForm.values.title}
-            onChange={(e) =>
-              surveyForm.setFieldValue('title', e?.target?.value)
-            }
-          />
-          <InputTextarea
-            placeholder="Survey Description"
-            className="w-full p-1.5 text-xl pt-2 text-start border-b font-semibold"
-            defaultValue={surveyForm.values.description}
-            rows={3}
-            onChange={(e) =>
-              surveyForm.setFieldValue('description', e?.target?.value)
-            }
-          />
-        </div>
-        <div className="w-full flex flex-col bg-white max-h-[70%] items-start overflow-y-auto">
-          {surveyForm?.values?.questions?.map((question, i) => (
-            <Question key={question.id} {...{ ...question, index: i + 1 }} />
-          ))}
+        <div className="w-full border shadow rounded-md">
+          <div className="relative flex flex-col w-full space-y-5 items-start border-b-4 p-4 overflow-clip border-purple-600">
+            <img
+              src="/src/assets/createSurvey.jpg"
+              className="absolute top-0 left-0 -z-10 opacity-40"
+              alt=""
+            />
+            <InputText
+              placeholder="Unititled Survey"
+              className="w-3/6 text-4xl p-1.5 border-b font-semibold "
+              value={surveyForm.values.title}
+              onChange={(e) =>
+                surveyForm.setFieldValue('title', e?.target?.value)
+              }
+            />
+            <InputTextarea
+              placeholder="Survey Description"
+              className="w-full p-1.5 text-xl pt-2 text-start border-b"
+              defaultValue={surveyForm.values.description}
+              rows={2}
+              onChange={(e) =>
+                surveyForm.setFieldValue('description', e?.target?.value)
+              }
+            />
+          </div>
+          <div className="w-full mt-10 flex flex-col p-4  bg-white  max-h-[50%] items-start overflow-auto">
+            {surveyForm?.values?.questions?.map((question, i) => (
+              <Question key={question.id} {...{ ...question, index: i + 1 }} />
+            ))}
 
-          {/* <Carousel
-            className="w-3/4"
-            value={surveyForm?.values?.questions}
-            numVisible={1}
-            itemTemplate={question}
-          /> */}
-          <NewQuestion
-            state={newQuestion}
-            setState={setNewQuestion}
-            addQuestion={addQuestion}
-          />
+            <NewQuestion
+              state={newQuestion}
+              setState={setNewQuestion}
+              addQuestion={addQuestion}
+            />
+          </div>
         </div>
         <div className="w-3/5 mt-5 flex justify-end">
           <form onSubmit={surveyForm.handleSubmit}>

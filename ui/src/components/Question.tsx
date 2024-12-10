@@ -20,7 +20,7 @@ const Question = ({
   isRequired: boolean;
 }) => {
   return (
-    <div className="border rounded p-2 m-2 text-xl">
+    <div className="p-2 m-2 text-xl">
       <div className="">
         <span className="pr-2">{index}.</span>
         {title}
@@ -84,8 +84,8 @@ const getQuestion = (type: string, answer: any) => {
       );
     case questionTypes.rating:
       return (
-        <div className="flex space-x-3 mt-4 justify-center">
-          <Rating className="question" cancel={false} />
+        <div className="flex ml-[25%] mt-4 justify-center">
+          <Rating className="question space-x-10" cancel={false} />
         </div>
       );
 
