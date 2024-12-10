@@ -20,7 +20,7 @@ const SurveyDetail = () => {
           options={countries}
           optionLabel="name"
           placeholder="Select a survey"
-          className="w-full md:w-14rem"
+          className="w-full md:w-14rem text-semibold"
         />
       </div>
       <div className="card  w-3/4 mx-auto bg-white">
@@ -58,7 +58,7 @@ const SurveyDetail = () => {
       </div>
       <img
         src="/src/assets/createSurvey.jpg"
-        className="h-full w-full absolute top-0 left-0 -z-10"
+        className="h-full w-full absolute top-0 left-0 -z-10 opacity-20"
       />
     </div>
   );
@@ -100,19 +100,19 @@ const Track = () => {
         <div className="w-3/4 border-l flex flex-col gap-10">
           <div className="flex rounded-md p-5 border-b">
             <div className="w-1/3 text-center border-r">
-              <p>Total</p>
+              <p className="text-semibold">Total</p>
               <p className="font-light text-2xl">32</p>
             </div>
             <div className="w-1/3 text-center border-r">
-              <p>Opened</p>
+              <p className="text-semibold">Opened</p>
               <p className="font-light text-2xl">23</p>
             </div>
             <div className="w-1/3 text-center border-r">
-              <p>Responed</p>
+              <p className="text-semibold">Responded</p>
               <p className="font-light text-2xl">20</p>
             </div>
             <div className="w-1/3 text-center">
-              <p>Avg estimated time</p>
+              <p className="text-semibold">Avg estimated time</p>
               <p className="font-light text-2xl">23s</p>
             </div>
           </div>
