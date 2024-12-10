@@ -20,8 +20,8 @@ const Question = ({
   isRequired: boolean;
 }) => {
   return (
-    <div className="border rounded p-2 m-2">
-      <div className="font-semibold">
+    <div className="border rounded p-2 m-2 text-xl">
+      <div className="">
         <span className="pr-2">{index}.</span>
         {title}
         {isRequired && <span className="text-red-500"> *</span>}
@@ -53,7 +53,6 @@ const getQuestion = (type: string, answer: any) => {
       return (
         <InputNumber
           className="border-b"
-          // value={answer}
           onChange={(e) => (answer = e.value)}
         />
       );

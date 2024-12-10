@@ -28,7 +28,7 @@ const Dashboard = () => {
         <Card onClick={() => navigate('/design', { replace: true })}>
           <CiEdit size={30} />
           <div className="text-xl font-bold">
-            Design
+            Create
             <p className="text-sm font-light">
               Create customized survey templates
             </p>
