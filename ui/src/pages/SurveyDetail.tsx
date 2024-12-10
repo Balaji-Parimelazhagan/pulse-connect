@@ -10,8 +10,8 @@ const SurveyDetail = () => {
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
 
   return (
-    <div className="flex flex-col items-center mt-3">
-      <div className="border w-1/4 ">
+    <div className="flex flex-col items-center mt-44">
+      <div className="border w-1/4">
         <Dropdown
           value={selectedCountry}
           onChange={(e) => setSelectedCountry(e.value)}
@@ -21,7 +21,7 @@ const SurveyDetail = () => {
           className="w-full md:w-14rem"
         />
       </div>
-      <div className="card  w-3/4 mx-auto">
+      <div className="card  w-3/4 mx-auto bg-white">
         <div className=" mt-10">
           <Track />
           <QuestionCarousel />
@@ -54,6 +54,10 @@ const SurveyDetail = () => {
           </TabView> */}
         </div>
       </div>
+      <img
+        src="/src/assets/createSurvey.jpg"
+        className="h-full w-full absolute top-0 left-0 -z-10"
+      />
     </div>
   );
 };
