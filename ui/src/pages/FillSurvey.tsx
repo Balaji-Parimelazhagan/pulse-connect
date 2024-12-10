@@ -4,11 +4,37 @@ import Question from '../components/Question';
 import { getSurvey } from '../services/surveyService';
 import { ISurvey } from '../constants/appContants';
 import { useParams } from 'react-router-dom';
+import { Button } from 'primereact/button';
 
 const FillSurvey = () => {
   const { id } = useParams();
   const [survey, setSurvey] = useState<ISurvey | null>(null);
   const [isInteractiveMode, setIsInteractiveMode] = useState(false);
+
+  const questions = [
+    {
+      id: 1733216784355,
+      title: 'What improvements would you like to see in the workplace?',
+      type: 'short Text',
+      answer: '',
+      isRequired: false,
+    },
+    {
+      id: 1733216798497,
+      title:
+        'What additional tools or support would help you be more productive?\\n',
+      type: 'short Text',
+      answer: '',
+      isRequired: false,
+    },
+    {
+      id: 1733216816169,
+      title: 'What suggestions do you have for improving communication?',
+      type: 'short Text',
+      answer: '',
+      isRequired: true,
+    },
+  ];
 
   useEffect(() => {
     const fetchSurvey = async () => {
@@ -37,15 +63,25 @@ const FillSurvey = () => {
             </div>
           </div>
           <div className="flex flex-col w-3/5 bg-white">
-            {survey?.questions?.map((question, index) => (
+            {questions?.map((question, index) => (
               <Question key={question.id} {...{ ...question, index }} />
             ))}
           </div>
-          <div className="w-2/5"></div>
+          <div className="w-2/5 flex justify-center">
+            <Button
+              className="border text-blue-500 text-lg border-blue-500 rounded-l-full rounded-r-full px-2.5 py-1.5"
+              label="Submit"
+            ></Button>
+          </div>
           <img
-            src="/assets/3.jpg"
+            src="/src/assets/3.jpg"
             alt="Background"
-            className="h-64 absolute bottom-0 right-0 -z-10"
+            className="h-64 absolute -bottom-96 -right-24 -z-10"
+          />
+          <img
+            src="/src/assets/4.jpg"
+            alt="Background"
+            className="h-64 absolute -bottom-96 -left-40 -z-10"
           />
         </div>
       ) : (

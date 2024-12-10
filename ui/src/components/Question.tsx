@@ -37,7 +37,7 @@ const getQuestion = (type: string, answer: any) => {
       return (
         <InputText
           className="border-b"
-          value={answer}
+          // value={answer}
           onChange={(e) => (answer = e.target.value)}
         />
       );
@@ -45,7 +45,7 @@ const getQuestion = (type: string, answer: any) => {
       return (
         <InputTextarea
           className="border-b"
-          value={answer}
+          // value={answer}
           onChange={(e) => (answer = e.target.value)}
         />
       );
@@ -53,14 +53,14 @@ const getQuestion = (type: string, answer: any) => {
       return (
         <InputNumber
           className="border-b"
-          value={answer}
+          // value={answer}
           onChange={(e) => (answer = e.value)}
         />
       );
     case questionTypes.radio:
       <RadioButton
         className="mt-4"
-        value={answer}
+        // value={answer}
         onChange={(e) => (answer = e.target.value)}
       />;
       return;

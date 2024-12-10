@@ -1,7 +1,7 @@
-import { Button } from "primereact/button";
-import { Column } from "primereact/column";
-import { DataTable } from "primereact/datatable";
-import { camelCaseToText } from "../utils/common";
+import { Button } from 'primereact/button';
+import { Column } from 'primereact/column';
+import { DataTable } from 'primereact/datatable';
+import { camelCaseToText } from '../utils/common';
 
 const Table = ({
   data,
@@ -22,7 +22,7 @@ const Table = ({
           {createLabel && (
             <Button
               label={createLabel}
-              className="bg-green-400 text-white p-1 px-1.5 rounded-none"
+              className="border-2 border-blue-500 text-blue-500 rounded-r-full rounded-l-full p-1 px-2"
               onClick={createAction}
             />
           )}

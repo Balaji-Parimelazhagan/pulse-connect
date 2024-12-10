@@ -15,15 +15,31 @@ export interface IQuestion {
   answer: any;
 }
 export interface ISurvey {
+  id?: string;
   title: string;
-  description: string;
-  questions: IQuestion[] | [];
-  emails: string[] | [];
+  description?: string;
+  department: string;
+  questions?: IQuestion[] | [];
+  emails?: string[] | [];
+  createdBy: string;
+  updatedBy?: string;
 }
 
 export interface IDispute {
-  title: string;
+  id?: string;
+  abstract: string;
   department: string;
-  description: string;
+  priority?: string;
+  assignee?: string;
+  description?: string;
   email?: string;
+  createdAt?: string;
+  createdBy?: string;
+}
+
+export interface IMessage {
+  id?: string;
+  createdAt?: string;
+  content?: string;
+  sender?: string;
 }
